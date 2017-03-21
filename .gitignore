@@ -1,6 +1,4 @@
-
 build.xml
-build/*
 nbproject/*
 dist/*
 config.json
