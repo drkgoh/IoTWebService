@@ -111,7 +111,7 @@ public class DataManager {
             updated = stmt.execute();
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+            e.printStackTrace(System.out);
         }
         return updated;
     }
