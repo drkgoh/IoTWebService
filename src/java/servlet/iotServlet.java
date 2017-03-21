@@ -49,6 +49,7 @@ public class iotServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DataManager dm = new DataManager(getServletContext().getRealPath("/WEB-INF"));
+        System.out.println(getServletContext().getRealPath("/WEB-INF"));
         response.setContentType("application/json;charset=utf-8");
         System.out.println("THIS WORKS!!!!!");
         try (PrintWriter out = response.getWriter()) {
@@ -73,6 +74,7 @@ public class iotServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DataManager dm = new DataManager(getServletContext().getRealPath("/WEB-INF"));
+        System.out.println(getServletContext().getRealPath("/WEB-INF"));
         response.setContentType("application/json; charset=utf-8");
         System.out.println("THIS WORKS?????!!!!!");
         try (PrintWriter out = response.getWriter()) {
