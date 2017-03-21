@@ -29,10 +29,11 @@ public class DataManager {
     
     public DataManager() throws IOException{
         Gson gson = new Gson();
+        String contents = null;
         try {
-            String contents = new String(Files.readAllBytes(Paths.get("./build/web/WEB-INF/classes/config/config.json")));
+            contents = new String(Files.readAllBytes(Paths.get("./build/web/WEB-INF/classes/config/config.json")));
         } catch (Exception e){
-            new String(Files.readAllBytes(Paths.get("./build/WEB-INF/classes/config/config.json")));
+            contents = new String(Files.readAllBytes(Paths.get("./build/WEB-INF/classes/config/config.json")));
         }
         cm = gson.fromJson(contents, ConnectionManager.class);
     }
