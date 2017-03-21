@@ -27,14 +27,12 @@ public class DataManager {
 
     private ConnectionManager cm;
     
-    public DataManager() throws IOException{
+    public DataManager(String deployment) throws IOException{
         Gson gson = new Gson();
         String contents = null;
-        try {
-            contents = new String(Files.readAllBytes(Paths.get("./build/web/WEB-INF/classes/config/config.json")));
-        } catch (Exception e){
-            contents = new String(Files.readAllBytes(Paths.get("/classes/config/config.json")));
-        }
+       
+        contents = new String(Files.readAllBytes(Paths.get(deployment + "/classes/config/config.json")));
+        
         cm = gson.fromJson(contents, ConnectionManager.class);
     }
     
