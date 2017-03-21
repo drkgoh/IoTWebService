@@ -27,7 +27,6 @@ public class iotServlet extends HttpServlet {
     private DataManager dm;
     
     public iotServlet(){
-        super();
         try {
             ServletContext context = this.getServletContext();
             String fullPath = context.getRealPath("/WEB-INF");
