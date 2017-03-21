@@ -24,18 +24,17 @@ import model.Beacon;
  * @author derrickgoh
  */
 public class iotServlet extends HttpServlet {
-    private DataManager dm;
     
-    public iotServlet(){
-        try {
-            ServletContext context = this.getServletContext();
-            String fullPath = context.getRealPath("/WEB-INF");
-            dm = new DataManager(fullPath);
-        } catch (Exception ex) {
-            Logger.getLogger(iotServlet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-    }
+//    public iotServlet() throws IOException{
+////        try {
+//            ServletContext context = this.getServletContext();
+//            String fullPath = context.getRealPath("/WEB-INF");
+//            dm = new DataManager(fullPath);
+////        } catch (Exception ex) {
+////            Logger.getLogger(iotServlet.class.getName()).log(Level.SEVERE, null, ex);
+////        }
+//        
+//    }
     
     
     /**
@@ -49,7 +48,9 @@ public class iotServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        DataManager dm = new DataManager(getServletContext().getRealPath("/WEB-INF"));
         response.setContentType("application/json;charset=utf-8");
+        System.out.println("THIS WORKS!!!!!");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String timeStart = request.getHeader("timeStart");
@@ -71,7 +72,9 @@ public class iotServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        DataManager dm = new DataManager(getServletContext().getRealPath("/WEB-INF"));
         response.setContentType("application/json; charset=utf-8");
+        System.out.println("THIS WORKS?????!!!!!");
         try (PrintWriter out = response.getWriter()) {
             Gson gson = new Gson();
             String jsonString = new String();
@@ -90,6 +93,6 @@ public class iotServlet extends HttpServlet {
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 
 }
