@@ -35,6 +35,11 @@ public class DataManager {
     }
     
     //DateTime format is 2017-03-18 13:27:53
+    //Need to rethink retrieveIntervalData
+    //1. Need to check the SQL statement to verify accuracy
+    //2. Should not return an ArrayList of Beacons, should be an ArrayList of GetResponse.
+    //3. Change SQL timestamp to become a proper SQL timestamp/datetime object
+    //4. Write bootstrap in case Database is empty.
     public ArrayList<Beacon> retrieveIntervalData(String startTime, String endTime) throws IOException {
         ArrayList<Beacon> list = new ArrayList<>();
         Connection conn = cm.getConnection();
@@ -96,7 +101,7 @@ public class DataManager {
 
         return list;
     }
-
+    
     public boolean updateData(Beacon b) {
         Connection conn = cm.getConnection();
         boolean updated = false;
