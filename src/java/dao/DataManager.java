@@ -33,7 +33,7 @@ public class DataManager {
         try {
             contents = new String(Files.readAllBytes(Paths.get("./build/web/WEB-INF/classes/config/config.json")));
         } catch (Exception e){
-            contents = new String(Files.readAllBytes(Paths.get("./build/WEB-INF/classes/config/config.json")));
+            contents = new String(Files.readAllBytes(Paths.get("./WEB-INF/classes/config/config.json")));
         }
         cm = gson.fromJson(contents, ConnectionManager.class);
     }
