@@ -5,19 +5,30 @@
  */
 package servlet;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import dao.DataManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.Beacon;
 
 /**
  *
  * @author derrickgoh
  */
 public class iotServlet extends HttpServlet {
-
+    private DataManager dm;
+    
+    public iotServlet() throws IOException{
+        super();
+        dm = new DataManager();
+    }
+    
+    
     /**
      * Handles the HTTP <code>GET</code> method.
      *
@@ -32,15 +43,11 @@ public class iotServlet extends HttpServlet {
         response.setContentType("application/json;charset=utf-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet iotServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet iotServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            String timeStart = request.getHeader("timeStart");
+            String timeEnd = request.getHeader("timeEnd");
+            timeStart = timeStart.replace('T', ' ');
+            timeEnd = timeEnd.replace('T', ' ');
+            dm.retrieveIntervalData(timeStart, timeEnd);
         }
     }
 
@@ -57,16 +64,12 @@ public class iotServlet extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("application/json; charset=utf-8");
         try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet iotServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet iotServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            Gson gson = new Gson();
+            String jsonString = new String();
+            for (String line; (line = request.getReader().readLine()) != null; jsonString += line);
+            Beacon inputBeacon = gson.fromJson(jsonString, Beacon.class);
+            boolean updated = dm.updateData(inputBeacon);
+            out.println("status:" + updated);
         }
     }
 

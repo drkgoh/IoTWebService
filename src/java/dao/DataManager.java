@@ -25,20 +25,18 @@ import model.Beacon;
  */
 public class DataManager {
 
-    private Connection conn;
     private ConnectionManager cm;
     
     public DataManager() throws IOException{
         Gson gson = new Gson();
         String contents = new String(Files.readAllBytes(Paths.get("./build/web/WEB-INF/classes/config/config.json")));
         cm = gson.fromJson(contents, ConnectionManager.class);
-        conn = cm.getConnection();
     }
     
     //DateTime format is 2017-03-18 13:27:53
     public ArrayList<Beacon> retrieveIntervalData(String startTime, String endTime) throws IOException {
         ArrayList<Beacon> list = new ArrayList<>();
-
+        Connection conn = cm.getConnection();
         try {
             //find a way to retrieve the count(*) from the database using java. saves a lot of work
             String query = "SELECT beacon_id, timestamp, count(*) as count from beacon_data where timestamp > '" + startTime + "' and timestamp < '" + endTime + "' group by timestamp, beacon_id;";
@@ -69,8 +67,7 @@ public class DataManager {
 
     public ArrayList<Beacon> retrieveAllData() {
         ArrayList<Beacon> list = new ArrayList<>();
-        Connection conn = new ConnectionManager().getConnection();
-
+        Connection conn = cm.getConnection();
         try {
 
             String query = "Select * from beacon_data";
@@ -100,7 +97,7 @@ public class DataManager {
     }
 
     public boolean updateData(Beacon b) {
-        Connection conn = new ConnectionManager().getConnection();
+        Connection conn = cm.getConnection();
         boolean updated = false;
         String uuid = b.getUuid();
         String beaconID = b.getBeaconID();
