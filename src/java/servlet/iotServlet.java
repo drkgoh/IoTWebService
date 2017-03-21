@@ -10,6 +10,8 @@ import com.google.gson.GsonBuilder;
 import dao.DataManager;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -24,11 +26,16 @@ import model.Beacon;
 public class iotServlet extends HttpServlet {
     private DataManager dm;
     
-    public iotServlet() throws IOException{
+    public iotServlet(){
         super();
-        ServletContext context = this.getServletContext();
-        String fullPath = context.getRealPath("/WEB-INF");
-        dm = new DataManager(fullPath);
+        try {
+            ServletContext context = this.getServletContext();
+            String fullPath = context.getRealPath("/WEB-INF");
+            dm = new DataManager(fullPath);
+        } catch (Exception ex) {
+            Logger.getLogger(iotServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }
     
     
