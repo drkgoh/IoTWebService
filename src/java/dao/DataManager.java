@@ -30,9 +30,7 @@ public class DataManager {
     public DataManager(String deployment) throws IOException{
         Gson gson = new Gson();
         String contents = null;
-       
         contents = new String(Files.readAllBytes(Paths.get(deployment + "/classes/config/config.json")));
-        
         cm = gson.fromJson(contents, ConnectionManager.class);
     }
     

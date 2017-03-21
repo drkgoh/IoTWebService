@@ -75,7 +75,7 @@ public class iotServlet extends HttpServlet {
             throws ServletException, IOException {
         DataManager dm = new DataManager(getServletContext().getRealPath("/WEB-INF"));
         System.out.println(getServletContext().getRealPath("/WEB-INF"));
-        response.setContentType("application/json; charset=utf-8");
+        response.setContentType("application/json");
         System.out.println("THIS WORKS?????!!!!!");
         try (PrintWriter out = response.getWriter()) {
             Gson gson = new Gson();
