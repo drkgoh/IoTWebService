@@ -49,6 +49,6 @@ public class Beacon {
     
     @Override
     public String toString(){
-        return "Beacon ID: " + beaconID + "\nUUID: " + uuid + "\nTimestamp: " + timestamp;
+        return "beaconID: " + beaconID + ",\nuuid: " + uuid + ",\ntimestamp: " + timestamp;
     }
 }
