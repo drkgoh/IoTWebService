@@ -17,14 +17,14 @@ public class iotApp {
 
     public static void main(String[] args) throws IOException {
      DataManager dm = new DataManager(System.getProperty("user.dir") + "/build/web/WEB-INF");
-     ArrayList<Beacon> list = dm.retrieveIntervalData("2017-03-18 13:25:00","2017-03-18 13:30:00");
+     //ArrayList<Beacon> list = dm.retrieveIntervalData("2017-03-18 13:25:00","2017-03-18 13:30:00");
      //Beacon be = new Beacon("iot40","qwu2840dhwl1","2017-03-18 13:29:53");
      //System.out.println(dm.updateData(be));
      
-     for (int i = 0 ; i < list.size(); i++) {
-         Beacon b = list.get(i);
-         System.out.println(b.getTimestamp() + " | " + b.getBeaconID() + " - " + b.getUuid());
-     }
+//     for (int i = 0 ; i < list.size(); i++) {
+//         Beacon b = list.get(i);
+//         System.out.println(b.getTimestamp() + " | " + b.getBeaconID() + " - " + b.getUuid());
+//     }
 
     }
     

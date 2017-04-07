@@ -40,21 +40,23 @@ public class DataManager {
     //2. Should not return an ArrayList of Beacons, should be an ArrayList of GetResponse.
     //3. Change SQL timestamp to become a proper SQL timestamp/datetime object
     //4. Write bootstrap in case Database is empty.
-    public ArrayList<Beacon> retrieveIntervalData(String startTime, String endTime) throws IOException {
-        ArrayList<Beacon> list = new ArrayList<>();
+    public ArrayList<HashMap<String,Object>> retrieveIntervalData(String startTime, String endTime) throws IOException {
+        ArrayList<HashMap<String, Object>> list = new ArrayList<>();
         Connection conn = cm.getConnection();
         try {
             //find a way to retrieve the count(*) from the database using java. saves a lot of work
             String query = "SELECT beacon_id, timestamp, count(*) as count from beacon_data where timestamp > '" + startTime + "' and timestamp < '" + endTime + "' group by timestamp, beacon_id;";
             PreparedStatement stmt = conn.prepareStatement(query);
             ResultSet set = stmt.executeQuery();
-
             while (set.next()) {
+                HashMap<String, Object> each = new HashMap<>();
                 String beaconID = set.getString(1);
-                String uuid = set.getString(2);
-                String timestamp = set.getString(3);
-
-                list.add(new Beacon(beaconID, uuid, timestamp));
+                String timestamp = set.getString(2);
+                String count = set.getString(3);
+                each.put("beacon_id", beaconID);
+                each.put("timestamp", timestamp);
+                each.put("count", Integer.parseInt(count));
+                list.add(each);
 
             }
 

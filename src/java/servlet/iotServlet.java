@@ -11,6 +11,7 @@ import dao.DataManager;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
@@ -57,7 +58,7 @@ public class iotServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
             String timeStart = request.getHeader("timeStart");
             String timeEnd = request.getHeader("timeEnd");
-            ArrayList<Beacon> list = dm.retrieveIntervalData(timeStart, timeEnd);
+            List list = dm.retrieveIntervalData(timeStart, timeEnd);
             Gson gson = new Gson();
             try {out.println(gson.toJson(list));}
             catch(Exception e){
