@@ -87,7 +87,7 @@ public class iotServlet extends HttpServlet {
             String jsonOutput = "";
             jsonOutput += "{" + "status: " + updated + "}";
             System.out.println("Status of update: " + updated);
-            out.println("{status: "+ updated + ",\nBeacon: " + inputBeacon.toString()+"}");
+            out.println("{status: "+ updated + ",\nBeacon: {" + inputBeacon.toString()+"}}");
         } catch (Exception e){
             e.printStackTrace(System.out);
         }
