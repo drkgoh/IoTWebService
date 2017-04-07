@@ -47,5 +47,8 @@ public class Beacon {
         this.timestamp = timestamp;
     }
     
-    
+    @Override
+    public String toString(){
+        return "Beacon ID: " + beaconID + "\nUUID: " + uuid + "\nTimestamp: " + timestamp;
+    }
 }

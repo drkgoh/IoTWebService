@@ -86,6 +86,7 @@ public class iotServlet extends HttpServlet {
             boolean updated = dm.updateData(inputBeacon);
             out.println("status:" + updated);
             System.out.println("Status of update: " + updated);
+            response.getWriter().println("{status: "+ updated + "\nBeacon: " + inputBeacon.toString());
         } catch (Exception e){
             e.printStackTrace(System.out);
         }
