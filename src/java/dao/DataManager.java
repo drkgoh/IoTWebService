@@ -103,6 +103,7 @@ public class DataManager {
     }
     
     public boolean updateData(Beacon b) {
+        if(b==null) return false;
         Connection conn = cm.getConnection();
         boolean updated = false;
         String uuid = b.getUuid();

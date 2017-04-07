@@ -10,6 +10,7 @@ import com.google.gson.GsonBuilder;
 import dao.DataManager;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletContext;
@@ -49,16 +50,19 @@ public class iotServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DataManager dm = new DataManager(getServletContext().getRealPath("/WEB-INF"));
-        System.out.println(getServletContext().getRealPath("/WEB-INF"));
+        //System.out.println(getServletContext().getRealPath("/WEB-INF"));
         response.setContentType("application/json;charset=utf-8");
-        System.out.println("THIS WORKS!!!!!");
+        //System.out.println("THIS WORKS!!!!!");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             String timeStart = request.getHeader("timeStart");
             String timeEnd = request.getHeader("timeEnd");
-            timeStart = timeStart.replace('T', ' ');
-            timeEnd = timeEnd.replace('T', ' ');
-            dm.retrieveIntervalData(timeStart, timeEnd);
+            ArrayList<Beacon> list = dm.retrieveIntervalData(timeStart, timeEnd);
+            Gson gson = new Gson();
+            try {out.println(gson.toJson(list));}
+            catch(Exception e){
+                out.println(gson.toJson(e));
+            }
         }
     }
 
@@ -74,9 +78,9 @@ public class iotServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DataManager dm = new DataManager(getServletContext().getRealPath("/WEB-INF"));
-        System.out.println(getServletContext().getRealPath("/WEB-INF"));
+        //System.out.println(getServletContext().getRealPath("/WEB-INF"));
         response.setContentType("application/json");
-        System.out.println("THIS WORKS?????!!!!!");
+        //System.out.println("THIS WORKS?????!!!!!");
         try (PrintWriter out = response.getWriter()) {
             Gson gson = new Gson();
             String jsonString = new String();
@@ -87,7 +91,7 @@ public class iotServlet extends HttpServlet {
                 boolean updated = dm.updateData(inputBeacon);
                 String jsonOutput = "";
                 jsonOutput += "{" + "status: " + updated + "}";
-                System.out.println("Status of update: " + updated);
+                //System.out.println("Status of update: " + updated);
                 out.println("{\"status\": "+ updated + ",\n\"beacon\": "+ gson.toJson(inputBeacon) + "}");
             } catch (Exception e){
                 out.println(gson.toJson(e));
