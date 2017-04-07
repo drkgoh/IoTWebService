@@ -84,7 +84,8 @@ public class iotServlet extends HttpServlet {
             System.out.println(jsonString);
             Beacon inputBeacon = gson.fromJson(jsonString, Beacon.class);
             boolean updated = dm.updateData(inputBeacon);
-            out.println("{status:" + updated + "}");
+            String jsonOutput = "";
+            jsonOutput += "{" + "status: " + updated + "}";
             System.out.println("Status of update: " + updated);
             //out.println("{status: "+ updated + "\nBeacon: " + inputBeacon.toString());
         } catch (Exception e){
