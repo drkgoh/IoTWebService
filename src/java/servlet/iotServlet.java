@@ -60,7 +60,13 @@ public class iotServlet extends HttpServlet {
             String timeEnd = request.getHeader("timeEnd");
             List list = dm.retrieveIntervalData(timeStart, timeEnd);
             Gson gson = new Gson();
-            try {out.println(gson.toJson(list));}
+            
+            try {
+                if(list == null){
+                   throw new NullPointerException("No results found!");
+                }
+                out.println(gson.toJson(list));
+            }
             catch(Exception e){
                 out.println(gson.toJson(e));
             }
