@@ -62,7 +62,7 @@ public class iotServlet extends HttpServlet {
             Gson gson = new Gson();
             
             try {
-                if(list == null){
+                if(list == null || list.isEmpty()){
                    throw new NullPointerException("No results found!");
                 }
                 out.println(gson.toJson(list));
