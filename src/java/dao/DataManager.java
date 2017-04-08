@@ -52,10 +52,12 @@ public class DataManager {
             while (set.next()) {
                 HashMap<String, Object> each = new HashMap<>();
                 String beaconID = set.getString(1);
-                String timestamp = set.getString(2);
-                String count = set.getString(3);
+                String hour = set.getString(2);
+                String minute = set.getString(3);
+                String count = set.getString(4);
                 each.put("beacon_id", beaconID);
-                each.put("timestamp", timestamp);
+                each.put("hour", Integer.parseInt(hour));
+                each.put("minute", Integer.parseInt(minute));
                 each.put("count", Integer.parseInt(count));
                 list.add(each);
 
