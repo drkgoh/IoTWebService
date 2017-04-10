@@ -75,6 +75,42 @@ public class DataManager {
 
         return list;
     }
+    
+    public ArrayList<HashMap<String,Object>> retrieveUuidData(String startTime, String endTime, String uuid) throws IOException {
+        ArrayList<HashMap<String, Object>> list = new ArrayList<>();
+        Connection conn = cm.getConnection();
+        try {
+            //find a way to retrieve the count(*) from the database using java. saves a lot of work
+            //String query = "SELECT beacon_id, timestamp, count(*) as count from beacon_data where timestamp > '" + startTime + "' and timestamp < '" + endTime + "' group by timestamp, beacon_id;";
+            String query = "select tab.beacon_id, tab.hour,tab.minute, count(*) from (select beacon_id,uuid,hour(timestamp) as hour,minute(timestamp) as minute from beacon_data where uuid = '" + uuid + "' timestamp > '" + startTime + "' and timestamp < '" + endTime + "' group by unix_timestamp(timestamp) div 60,uuid,beacon_id order by beacon_id,minute) as tab group by beacon_id, tab.minute";
+            PreparedStatement stmt = conn.prepareStatement(query);
+            ResultSet set = stmt.executeQuery();
+            while (set.next()) {
+                HashMap<String, Object> each = new HashMap<>();
+                String beaconID = set.getString(1);
+                String hour = set.getString(2);
+                String minute = set.getString(3);
+                String count = set.getString(4);
+                each.put("beacon_id", beaconID);
+                each.put("hour", Integer.parseInt(hour));
+                each.put("minute", Integer.parseInt(minute));
+                each.put("count", Integer.parseInt(count));
+                list.add(each);
+
+            }
+
+        } catch (SQLException e) {
+            throw new IllegalStateException("Cannot connect the database!", e);
+        } finally {
+            try {
+                conn.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(DataManager.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return list;
+    }
 
     public ArrayList<Beacon> retrieveAllData() {
         ArrayList<Beacon> list = new ArrayList<>();
