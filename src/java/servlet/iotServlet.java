@@ -65,117 +65,117 @@ public class iotServlet extends HttpServlet {
                 if(list == null || list.isEmpty()){
                    throw new NullPointerException("No results found!");
                 }
-                out.println("[\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot22\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 20,\n" +
-"    \"minute\": 28\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot22\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 76,\n" +
-"    \"minute\": 29\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot23\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 51,\n" +
-"    \"minute\": 28\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot24\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 17,\n" +
-"    \"minute\": 28\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot34\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 90,\n" +
-"    \"minute\": 28\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot34\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 87,\n" +
-"    \"minute\": 29\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot34\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 14,\n" +
-"    \"minute\": 30\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot35\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 73,\n" +
-"    \"minute\": 28\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot35\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 29,\n" +
-"    \"minute\": 29\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot35\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 84,\n" +
-"    \"minute\": 30\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot36\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 11,\n" +
-"    \"minute\": 28\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot36\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 31,\n" +
-"    \"minute\": 29\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot36\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 19,\n" +
-"    \"minute\": 30\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot36\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 91,\n" +
-"    \"minute\": 31\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot36\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 71,\n" +
-"    \"minute\": 32\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot37\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 82,\n" +
-"    \"minute\": 28\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot37\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 63,\n" +
-"    \"minute\": 29\n" +
-"  },\n" +
-"  {\n" +
-"    \"beacon_id\": \"iot37\",\n" +
-"    \"hour\": 16,\n" +
-"    \"count\": 51,\n" +
-"    \"minute\": 30\n" +
-"  }\n" +
-"]");
-                //out.println(gson.toJson(list));
+//                out.println("[\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot22\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 20,\n" +
+//"    \"minute\": 28\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot22\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 76,\n" +
+//"    \"minute\": 29\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot23\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 51,\n" +
+//"    \"minute\": 28\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot24\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 17,\n" +
+//"    \"minute\": 28\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot34\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 90,\n" +
+//"    \"minute\": 28\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot34\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 87,\n" +
+//"    \"minute\": 29\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot34\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 14,\n" +
+//"    \"minute\": 30\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot35\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 73,\n" +
+//"    \"minute\": 28\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot35\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 29,\n" +
+//"    \"minute\": 29\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot35\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 84,\n" +
+//"    \"minute\": 30\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot36\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 11,\n" +
+//"    \"minute\": 28\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot36\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 31,\n" +
+//"    \"minute\": 29\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot36\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 19,\n" +
+//"    \"minute\": 30\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot36\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 91,\n" +
+//"    \"minute\": 31\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot36\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 71,\n" +
+//"    \"minute\": 32\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot37\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 82,\n" +
+//"    \"minute\": 28\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot37\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 63,\n" +
+//"    \"minute\": 29\n" +
+//"  },\n" +
+//"  {\n" +
+//"    \"beacon_id\": \"iot37\",\n" +
+//"    \"hour\": 16,\n" +
+//"    \"count\": 51,\n" +
+//"    \"minute\": 30\n" +
+//"  }\n" +
+//"]");
+                out.println(gson.toJson(list));
             }
             catch(Exception e){
                 out.println(gson.toJson(e));
