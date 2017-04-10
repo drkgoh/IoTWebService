@@ -94,7 +94,7 @@ public class DataManager {
                 each.put("beacon_id", beaconID);
                 each.put("hour", Integer.parseInt(hour));
                 each.put("minute", Integer.parseInt(minute));
-                each.put("count", Integer.parseInt(count));
+                each.put("count", 10);
                 list.add(each);
 
             }
