@@ -82,7 +82,7 @@ public class DataManager {
         try {
             //find a way to retrieve the count(*) from the database using java. saves a lot of work
             //String query = "SELECT beacon_id, timestamp, count(*) as count from beacon_data where timestamp > '" + startTime + "' and timestamp < '" + endTime + "' group by timestamp, beacon_id;";
-            String query = "select tab.beacon_id, tab.hour,tab.minute, count(*) from (select beacon_id,uuid,hour(timestamp) as hour,minute(timestamp) as minute from beacon_data where uuid = '" + uuid + "' timestamp > '" + startTime + "' and timestamp < '" + endTime + "' group by unix_timestamp(timestamp) div 60,uuid,beacon_id order by beacon_id,minute) as tab group by beacon_id, tab.minute";
+            String query = "select tab.beacon_id, tab.hour,tab.minute, count(*) from (select beacon_id,uuid,hour(timestamp) as hour,minute(timestamp) as minute from beacon_data where uuid = '" + uuid + "' and timestamp > '" + startTime + "' and timestamp < '" + endTime + "' group by unix_timestamp(timestamp) div 60,uuid,beacon_id order by beacon_id,minute) as tab group by beacon_id, tab.minute";
             PreparedStatement stmt = conn.prepareStatement(query);
             ResultSet set = stmt.executeQuery();
             while (set.next()) {
