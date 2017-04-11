@@ -53,10 +53,10 @@ public class iotServlet extends HttpServlet {
             throws ServletException, IOException {
         DataManager dm = new DataManager(getServletContext().getRealPath("/WEB-INF"));
         //System.out.println(getServletContext().getRealPath("/WEB-INF"));
-//        response.addHeader("Access-Control-Allow-Origin", "*");
-//        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
-//        response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
-//        response.addHeader("Access-Control-Max-Age", "1728000");
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+        response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+        response.addHeader("Access-Control-Max-Age", "1728000");
         response.setContentType("application/json;charset=utf-8");
         //System.out.println("THIS WORKS!!!!!");
         try (PrintWriter out = response.getWriter()) {
@@ -201,10 +201,10 @@ public class iotServlet extends HttpServlet {
             throws ServletException, IOException {
         DataManager dm = new DataManager(getServletContext().getRealPath("/WEB-INF"));
         //System.out.println(getServletContext().getRealPath("/WEB-INF"));
-//        response.addHeader("Access-Control-Allow-Origin", "*");
-//        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
-//        response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
-//        response.addHeader("Access-Control-Max-Age", "1728000");
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+        response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+        response.addHeader("Access-Control-Max-Age", "1728000");
         response.setContentType("application/json");
         //System.out.println("THIS WORKS?????!!!!!");
         try (PrintWriter out = response.getWriter()) {
