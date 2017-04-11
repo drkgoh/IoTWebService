@@ -23,7 +23,15 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "uuidServlet", urlPatterns = {"/uuidServlet"})
 public class uuidServlet extends HttpServlet {
 
-    /**
+    
+    @Override
+    public void service(HttpServletRequest req, HttpServletResponse response){
+        response.addHeader("Access-Control-Allow-Origin", "*");
+        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
+        response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
+        response.addHeader("Access-Control-Max-Age", "1728000");
+    }
+        /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
      *
@@ -35,10 +43,7 @@ public class uuidServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         DataManager dm = new DataManager(getServletContext().getRealPath("/WEB-INF"));
-        response.addHeader("Access-Control-Allow-Origin", "*");
-        response.addHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE, HEAD");
-        response.addHeader("Access-Control-Allow-Headers", "X-PINGOTHER, Origin, X-Requested-With, Content-Type, Accept");
-        response.addHeader("Access-Control-Max-Age", "1728000");
+        
         response.setContentType("application/json");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
