@@ -52,6 +52,8 @@ public class iotServlet extends HttpServlet {
             throws ServletException, IOException {
         DataManager dm = new DataManager(getServletContext().getRealPath("/WEB-INF"));
         //System.out.println(getServletContext().getRealPath("/WEB-INF"));
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST");
         response.setContentType("application/json;charset=utf-8");
         //System.out.println("THIS WORKS!!!!!");
         try (PrintWriter out = response.getWriter()) {
@@ -196,6 +198,8 @@ public class iotServlet extends HttpServlet {
             throws ServletException, IOException {
         DataManager dm = new DataManager(getServletContext().getRealPath("/WEB-INF"));
         //System.out.println(getServletContext().getRealPath("/WEB-INF"));
+        response.setHeader("Access-Control-Allow-Origin", "*");
+        response.setHeader("Access-Control-Allow-Methods", "GET, POST");
         response.setContentType("application/json");
         //System.out.println("THIS WORKS?????!!!!!");
         try (PrintWriter out = response.getWriter()) {
